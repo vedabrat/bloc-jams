@@ -8,9 +8,7 @@ var revealPoint = function(point) {
 var points = document.getElementsByClassName('point');
 
 var animatePoints = function(points) {
-    for (var i = 0; i < points.length; i++) {
-        revealPoint(points[i]);
-    }
+    forEach(points,revealPoint);
 };
 
 window.onload = function() {
@@ -28,4 +26,7 @@ window.onload = function() {
         
     });
     animatePoints(points);
+
+
 };
+
