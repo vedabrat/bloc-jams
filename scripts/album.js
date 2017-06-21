@@ -29,6 +29,21 @@
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+
+  var albumAnand = {
+     title: 'Guitabla',
+     artist: 'Vedabrat Etwaru',
+     label: 'EM',
+     year: '2017',
+     albumArtUrl: 'assets/images/album_covers/19.png',
+     songs: [
+         { title: 'Were we drunk?', duration: '2:01' },
+         { title: 'Love doesnt feel like this but', duration: '3:01' },
+         { title: 'Its 4am and i want you', duration: '3:21'},
+         { title: 'Its 5am and i want you out', duration: '3:14' },
+         { title: 'Drinking with a friend to forget you', duration: '2:15'}
+     ]
+ };
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -53,7 +68,7 @@ var createSongRow = function(songNumber, songName, songLength) {
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
- 
+        
      // #3
      albumSongList.innerHTML = '';
  
@@ -64,5 +79,10 @@ var createSongRow = function(songNumber, songName, songLength) {
  };
  
  window.onload = function() {
-     setCurrentAlbum(albumPicasso);
+     setCurrentAlbum(albumAnand);
+     window.addEventListener('click', function() {
+         if (setCurrentAlbum(albumAnand) == true) {
+             setCurrentAlbum(albumMarconi);
+         }
+     });
  };
