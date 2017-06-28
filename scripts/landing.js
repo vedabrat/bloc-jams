@@ -12,13 +12,13 @@ var points = document.getElementsByClassName('point');
 $(window).load(function() {
      if ($(window).height() > 950) {
          animatePoints();
-    }
-    var sellingPoints = document.getElementsByClassName('selling-points')[0];
-    var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
-     $(window).scroll(function(event) {
-         if ($(window).scrollTop() >= scrollDistance) {
-             animatePoints();
-        }
+            }
+            var sellingPoints = document.getElementsByClassName('selling-points')[0];
+            var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
+             $(window).scroll(function(event) {
+     if ($(window).scrollTop() >= scrollDistance) {
+         animatePoints();
+         }
     });
-    animatePoints(points);
-};
+    animatePoints(points); 
+});
