@@ -165,9 +165,22 @@ var setVolume = function(volume) {
      }
  };
 
+var togglePlayFromPlayerBar= function(){
+    if (currentSoundFile.isPaused() && playerBarPlayButton.click()){
+        $(this).html(pauseButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPauseButton);
+        currentSoundFile.play();
+    }
+    if (currentlyPlayingSongNumber === songNumber){
+        $(this).html(playButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPlayButton);
+        currentSoundFile.pause();
 
+    }
 
+};
 
+ var $barPlayPause = $('.main-controls .play-pause');
  var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
  var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
  var playerBarPlayButton = '<span class="ion-play"></span>';
@@ -188,6 +201,7 @@ var $nextButton = $('.main-controls .next');
     setCurrentAlbum(albumPicasso);
      $previousButton.click(previousSong);
      $nextButton.click(nextSong);
+     $barPlayPause.click(togglePlayFromPlayerBar);
 
 });
 
