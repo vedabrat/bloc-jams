@@ -4,7 +4,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     + '  <td class="song-item-number" data-song-number="' 
     + songNumber + '">' + songNumber + '</td>'
     + '  <td class="song-item-title">' + songName + '</td>' 
-    + '  <td class="song-item-duration">' + songLength + '</td>' 
+    + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>' 
     + '</tr>';
      var $row = $(template);
     var clickHandler = function() {
@@ -96,11 +96,20 @@ var setCurrentAlbum = function(album) {
              // #11
              var seekBarFillRatio = this.getTime() / this.getDuration();
              var $seekBar = $('.seek-control .seek-bar');
- 
+             setCurrentTimeInPlayerBar();
              updateSeekPercentage($seekBar, seekBarFillRatio);
          });
      }
+
  };
+ var setCurrentTimeInPlayerBar = function(currentTime) {
+     filterTimeCode($(document).find(".current-time").innerText = currentTime);
+ };
+
+ var filterTimeCode = function(timeInSeconds){
+    parseFloat(Math.floor(timeInSeconds));
+ }
+
  var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
     // #1
@@ -161,12 +170,17 @@ var trackIndex = function(album, song) {
     return album.songs.indexOf(song);
 };
 
-var updatePlayerBarSong = function() {
+var setTotalTimeInPlayerBar = function(totalTime) {
+    filterTimeCode($(document).find(".total-time").innerText = totalTime);
+}
 
+var updatePlayerBarSong = function() {
+    setTotalTimeInPlayerBar();
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
     $('.main-controls .play-pause').html(playerBarPauseButton);
+
 };
 var nextSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
@@ -240,6 +254,7 @@ var setVolume = function(volume) {
          currentSoundFile.setVolume(volume);
      }
  };
+
 
 
 
