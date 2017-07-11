@@ -58,6 +58,14 @@ var createSongRow = function(songNumber, songName, songLength) {
      return $row;
 
 };
+var setSong = function(songNumber) {
+    currentlyPlayingSongNumber = songNumber;
+    currentSongFromAlbum = songNumber;
+}
+var getSongNumberCell = function(number){
+    $(number).parent.songNumber();
+};
+
 var setCurrentAlbum = function(album) {
      currentAlbum = album;
      var $albumTitle = $('.album-view-title');
@@ -98,6 +106,7 @@ var nextSong = function() {
         currentSongIndex = 0;
     }
     var lastSongNumber = currentlyPlayingSongNumber;
+    setSong();
     currentlyPlayingSongNumber = currentSongIndex + 1;
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
