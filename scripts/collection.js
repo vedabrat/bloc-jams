@@ -6,9 +6,9 @@
    + '    <p>'
    + '      <a class="album-name" href="album.html"> The Colors </a>'
    + '      <br/>'
-   + '      <a href="album.html"> Pablo Picasso </a>'
+   + '      <a href="album.html"> Vedabrat Etwaru </a>'
    + '      <br/>'
-   + '      X songs'
+   + '      5 songs'
    + '      <br/>'
    + '    </p>'
    + '  </div>'
@@ -26,7 +26,7 @@
      $collectionContainer.empty();
  
      // #3
-     for (var i = 0; i < 12; i++) {
+     for (var i = 0; i < 4; i++) {
          var $newThumbnail = buildCollectionItemTemplate();
          $collectionContainer.append($newThumbnail);
      }
